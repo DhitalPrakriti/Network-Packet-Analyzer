@@ -37,8 +37,15 @@ Technical Skills
 **Testing & QA** - Comprehensive unit and integration testing
 **Data Analysis** - Real-time traffic statistics and visualization
 
-
+## 🚀 Quick Start
 1. **Clone the repository**
    ```bash
    git clone https://github.com/DhitalPrakriti/packet-analyzer.git
    cd packet-analyzer
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run in demo mode
+python src/cli.py --demo
+
