@@ -40,5 +40,5 @@ Technical Skills
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/packet-analyzer.git
+   git clone https://github.com/DhitalPrakriti/packet-analyzer.git
    cd packet-analyzer
