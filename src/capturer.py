@@ -9,6 +9,7 @@ class PacketCapturer:
     
     def __init__(self, use_real_capture=False):
         self.captured_packets = []
+        self.packet_count = 0
         self.use_real_capture = use_real_capture
         self.scapy_available = self._check_scapy()
         
@@ -116,7 +117,7 @@ class PacketCapturer:
         except:
             return "Unknown"
     
-    def _simulated_capture(self, count):
+    def _simulated_capture(self, count, timeout=30):
         """Simulated packet capture"""
         print(f"🎯 Simulating capture of {count} packets...")
         

@@ -12,11 +12,42 @@ class ProtocolParser:
         """
         Parse a packet and return educational information about each layer
         """
+        if not packet_info:
+            return self._create_empty_analysis()
+    
         if packet_info.get('real_packet', False):
             return self._parse_real_packet(packet_info)
         else:
             return self._parse_simulated_packet(packet_info)
+    def _create_empty_analysis(self):
+        """Return analysis structure for empty/invalid packets"""
+        return {
+            'packet_number': 0,
+            'protocol': 'Unknown',
+            'layers': {
+                'error': {
+                'message': 'Invalid or empty packet data',
+                'description': 'No packet information provided'
+            }
+        },
+        'summary': 'Invalid packet - no data to analyze'
+    }
     
+    def _create_basic_analysis(self, packet_info, message):
+        """Create a basic analysis when detailed parsing fails"""
+        return {
+            'packet_number': packet_info.get('number', 0),  # Use get() here too
+            'protocol': packet_info.get('protocol', 'Unknown'),
+            'layers': {
+                'basic': {
+                'summary': packet_info.get('summary', 'No summary'),
+                'length': packet_info.get('length', 0),
+                'description': 'Basic packet information',
+                'educational_note': message
+            }
+        },
+        'summary': 'Basic analysis - ' + message
+    }
     def _parse_real_packet(self, packet_info):
         """Parse real Scapy packet with better error handling"""
         try:
@@ -159,16 +190,17 @@ class ProtocolParser:
     
     def _parse_simulated_packet(self, packet_info):
         """Parse simulated packet with educational content"""
+    # Use get() with default values for missing fields
         return {
-            'packet_number': packet_info['number'],
-            'protocol': packet_info['protocol'],
-            'layers': {
-                'simulated': {
-                    'source': packet_info['src_ip'],
-                    'destination': packet_info['dst_ip'],
-                    'length': packet_info['length'],
-                    'description': 'Simulated packet for educational demonstration',
-                    'educational_note': 'Real packets would show Ethernet, IP, and Transport layer details'
+        'packet_number': packet_info.get('number', 0),
+        'protocol': packet_info.get('protocol', 'Unknown'),
+        'layers': {
+            'simulated': {
+                'source': packet_info.get('src_ip', 'N/A'),
+                'destination': packet_info.get('dst_ip', 'N/A'),
+                'length': packet_info.get('length', 0),
+                'description': 'Simulated packet for educational demonstration',
+                'educational_note': 'Real packets would show Ethernet, IP, and Transport layer details'
                 }
             },
             'summary': 'Simulated packet analysis'
