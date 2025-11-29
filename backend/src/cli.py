@@ -284,6 +284,8 @@ Examples:
             print(f"✅ Loaded {len(packets)} packets into analyzer")
             
             return True
+        else:
+            print(f"❌ Failed to load packets from {args.load}")
         return False
 
     def list_captures(self):

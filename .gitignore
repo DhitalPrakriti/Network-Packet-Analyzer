@@ -20,3 +20,7 @@ env/
 *.pcap
 captures/
 logs/
+
+node_modules/
+dist/
+build/

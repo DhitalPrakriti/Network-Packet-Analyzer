@@ -152,22 +152,7 @@ class ProtocolParser:
             
         except Exception as e:
             return self._create_basic_analysis(packet_info, f"Parsing error: {str(e)}")
-    
-    def _create_basic_analysis(self, packet_info, message):
-        """Create a basic analysis when detailed parsing fails"""
-        return {
-            'packet_number': packet_info['number'],
-            'protocol': packet_info.get('protocol', 'Unknown'),
-            'layers': {
-                'basic': {
-                    'summary': packet_info.get('summary', 'No summary'),
-                    'length': packet_info.get('length', 0),
-                    'description': 'Basic packet information',
-                    'educational_note': message
-                }
-            },
-            'summary': 'Basic analysis - ' + message
-        }
+
     
     def _parse_tcp_flags(self, flags):
         """Convert TCP flags to human-readable format"""
