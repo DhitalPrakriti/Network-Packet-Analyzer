@@ -1,74 +1,151 @@
-# 🕵️‍♂️ Packet Analyzer - Network Analysis Tool
+# 🔧 Packet Analyzer - Backend
 
-A comprehensive, educational network packet analyzer built with Python. Capture, analyze, and understand network traffic with real-time parsing and professional-grade visualization.
+Python backend for the Packet Analyzer project, providing packet capture, analysis, and REST API functionality.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Python](https://img.shields.io/badge/python-3.8%2B-green)
-![React](https://img.shields.io/badge/react-18%2B-blue)
+## 🏗️ Architecture
+backend/
+├── api/
+│ └── app.py # Flask REST API server
+└── (linked to src/) # Core analyzer engine
 
-## ✨ Features
+text
 
-### 🔍 Core Capabilities
-- **Real & Simulated Packet Capture** - Real network traffic or safe simulation
-- **Protocol Parsing** - Deep analysis of Ethernet, IP, TCP, UDP, ICMP
-- **Smart Filtering** - Filter by protocol, IP, port, and more
-- **Traffic Statistics** - Comprehensive analytics and visualization
-- **Issue Detection** - Automatic network problem detection
-- **Data Persistence** - Save/load captures in JSON or Pickle format
+## 📦 Core Modules
 
-### 🎯 Educational Focus
-- **Layer-by-Layer Analysis** - Understand OSI model in practice
-- **Protocol Explanations** - Learn how each protocol works
-- **Security Insights** - Detect suspicious network activity
-- **Real-time Learning** - See networking concepts in action
+### `src/capturer.py`
+- Real and simulated packet capture
+- Scapy integration for network traffic
+- Protocol detection and classification
 
-## 🚀 Quick Start
+### `src/parser.py` 
+- Deep protocol analysis (Ethernet, IP, TCP, UDP, ICMP)
+- Layer-by-layer packet dissection
+- Educational protocol explanations
 
-### Prerequisites
-- Python 3.8 or higher
-- Administrative privileges (for real packet capture)
-- Node.js 16+ (for frontend)
+### `src/statistics.py`
+- Traffic analytics and metrics
+- Protocol distribution analysis
+- Packet size statistics
 
-### Installation
+### `src/detector.py`
+- Network issue detection
+- Security anomaly identification
+- Performance problem analysis
 
-1. **Clone the repository**
+### `src/filters.py`
+- Custom packet filtering
+- Protocol, IP, and port-based filters
+- Real-time traffic filtering
+
+### `src/storage.py`
+- Capture persistence (JSON/Pickle)
+- File management and organization
+- Data export/import functionality
+
+### `src/cli.py`
+- Command-line interface
+- Interactive packet analysis
+- Batch processing capabilities
+
+## 🚀 Installation
+
 ```bash
-git clone https://github.com/DhitalPrakriti/Packet-Analyzer.git
-cd Packet-Analyzer
-
-**Backend setup**
-**# Install Python dependencies**
+# Install dependencies
 pip install -r requirements.txt
 
 # Install in development mode
 pip install -e .
+📡 API Endpoints
+Health & Status
+GET /api/health - Service health check
 
-# Run comprehensive demo
+Packet Operations
+POST /api/capture - Capture packets
+
+POST /api/analyze - Analyze packet protocols
+
+POST /api/statistics - Generate traffic statistics
+
+POST /api/detect-issues - Detect network issues
+
+Storage Operations
+POST /api/storage/save - Save capture to file
+
+GET /api/storage/load/<filename> - Load capture from file
+
+GET /api/storage/captures - List saved captures
+
+DELETE /api/storage/delete/<filename> - Delete capture file
+
+💻 CLI Usage
+bash
+# Comprehensive demo
 packetanalyzer --demo
 
-# Capture 10 real packets
+# Basic capture
 packetanalyzer --capture --count 10
 
-# Capture and show statistics
-packetanalyzer --capture --stats
-
-# Full analysis with issue detection
-packetanalyzer --capture --analyze --detect-issues
+# Capture with analysis
+packetanalyzer --capture --analyze --stats --detect-issues
 
 # Filter specific traffic
 packetanalyzer --capture --filter-protocol TCP --filter-dst-ip 8.8.8.8
 
 # Load and analyze saved capture
-packetanalyzer --load capture_20231201_143022.json --stats --detect-issues
-
-# Start the API server
+packetanalyzer --load capture_20231201_143022.json --stats
+🛠️ Development
+Dependencies
+txt
+scapy>=2.4.5      # Packet manipulation and capture
+Flask>=2.3.0      # Web framework and REST API
+flask-cors>=4.0.0 # Cross-origin resource sharing
+click>=8.0.0      # Command-line interface
+Running the API
+bash
 cd backend/api
 python app.py
+# Server starts on http://localhost:5000
+Testing
+bash
+# Run comprehensive demo
+packetanalyzer --demo
 
-# API will be available at: http://localhost:5000
+# Test specific functionality
+packetanalyzer --capture --count 5 --stats
+🔧 Configuration
+Network Permissions
+Real packet capture requires administrative privileges:
 
-# Start frontend development server
-cd frontend
-npm start
+bash
+# Linux/macOS
+sudo packetanalyzer --capture
 
-# Frontend will be available at: http://localhost:3000
+# Windows: Run as Administrator
+Storage Directory
+Captures are saved to ./captures/ directory by default.
+
+🐛 Troubleshooting
+Common Issues
+Permission denied for packet capture
+
+Run with sudo (Linux/macOS) or as Administrator (Windows)
+
+Scapy installation issues
+
+bash
+pip install --upgrade scapy
+Port 5000 
+
+📚 API Examples
+Capture Packets
+bash
+curl -X POST http://localhost:5000/api/capture \
+  -H "Content-Type: application/json" \
+  -d '{"count": 10, "realCapture": true}'
+Get Statistics
+bash
+curl -X POST http://localhost:5000/api/statistics \
+  -H "Content-Type: application/json" \
+  -d '{"packets": [...]}'
+text
+
