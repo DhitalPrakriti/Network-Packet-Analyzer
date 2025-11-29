@@ -1,52 +1,74 @@
-# PacketAnalyzer - Educational Network Protocol Analyzer
+# 🕵️‍♂️ Packet Analyzer - Professional Network Analysis Tool
 
-A professional-grade Python-based network packet analyzer for deep packet inspection, network diagnostics, and educational purposes. This tool provides comprehensive insights into network traffic with real-time analysis and detailed protocol explanations.
+A comprehensive, educational network packet analyzer built with Python. Capture, analyze, and understand network traffic with real-time parsing and professional-grade visualization.
 
-## Features
-### Core Analysis
-- **Real-time Packet Capture** - Live network traffic interception and analysis using Scapy
-- **Multi-layer Protocol Parsing** - Deep inspection of Ethernet, IP, TCP, UDP, and ICMP protocols
-- **Advanced Filtering System** - Custom filters by protocol, IP addresses, port numbers, and packet attributes
-- **Traffic Statistics** - Comprehensive analytics and visualization of network patterns
-- **Anomaly Detection** - Automated identification of network issues and suspicious activity
-- **Data Persistence** - Save and load packet captures in JSON format for later analysis
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Python](https://img.shields.io/badge/python-3.8%2B-green)
+![React](https://img.shields.io/badge/react-18%2B-blue)
 
-### Educational Value
-- **Layer-by-Layer Analysis** - Detailed breakdown of each OSI model layer
-- **Protocol Explanations** - Educational insights for each network protocol
-- **Interactive Learning** - Simulation mode for safe, educational exploration
-- **Professional CLI** - Industry-standard command-line interface
+## ✨ Features
 
-🛠️ Technical Implementation
-Key Technologies
-**Scapy** **- Packet manipulation and capture
-**Rich** **- Beautiful terminal formatting
-**Pytest** - Testing framework
-**Standard Library** **- No external dependencies for core functionality
+### 🔍 Core Capabilities
+- **Real & Simulated Packet Capture** - Real network traffic or safe simulation
+- **Protocol Parsing** - Deep analysis of Ethernet, IP, TCP, UDP, ICMP
+- **Smart Filtering** - Filter by protocol, IP, port, and more
+- **Traffic Statistics** - Comprehensive analytics and visualization
+- **Issue Detection** - Automatic network problem detection
+- **Data Persistence** - Save/load captures in JSON or Pickle format
 
-Design Patterns
-**Modular Architecture** **- Independent, testable components
-**Strategy Pattern** - Flexible filtering system
-**Factory Pattern** - Protocol parser selection
-**Observer Pattern** - Real-time analysis updates
-
-Technical Skills
-**Network Programming** - Deep understanding of TCP/IP stack and packet structures
-**Software Architecture** - Modular, maintainable, and scalable design
-**CLI Development** - Professional command-line tool design
-**Testing & QA** - Comprehensive unit and integration testing
-**Data Analysis** - Real-time traffic statistics and visualization
+### 🎯 Educational Focus
+- **Layer-by-Layer Analysis** - Understand OSI model in practice
+- **Protocol Explanations** - Learn how each protocol works
+- **Security Insights** - Detect suspicious network activity
+- **Real-time Learning** - See networking concepts in action
 
 ## 🚀 Quick Start
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/DhitalPrakriti/packet-analyzer.git
-   cd packet-analyzer
 
-# Install dependencies
+### Prerequisites
+- Python 3.8 or higher
+- Administrative privileges (for real packet capture)
+- Node.js 16+ (for frontend)
+
+### Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/DhitalPrakriti/Packet-Analyzer.git
+cd Packet-Analyzer
+
+**Backend setup**
+**# Install Python dependencies**
 pip install -r requirements.txt
 
-# Run in demo mode
-python src/cli.py --demo
+# Install in development mode
+pip install -e .
 
->>>>>>> 149ee3594754d35ac7735f9c56d73f6294c365d5
+# Run comprehensive demo
+packetanalyzer --demo
+
+# Capture 10 real packets
+packetanalyzer --capture --count 10
+
+# Capture and show statistics
+packetanalyzer --capture --stats
+
+# Full analysis with issue detection
+packetanalyzer --capture --analyze --detect-issues
+
+# Filter specific traffic
+packetanalyzer --capture --filter-protocol TCP --filter-dst-ip 8.8.8.8
+
+# Load and analyze saved capture
+packetanalyzer --load capture_20231201_143022.json --stats --detect-issues
+
+# Start the API server
+cd backend/api
+python app.py
+
+# API will be available at: http://localhost:5000
+
+# Start frontend development server
+cd frontend
+npm start
+
+# Frontend will be available at: http://localhost:3000
