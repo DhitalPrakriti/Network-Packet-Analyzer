@@ -22,53 +22,41 @@ A comprehensive, educational network packet analyzer built with Python. Capture,
 - **Security Insights** - Detect suspicious network activity
 - **Real-time Learning** - See networking concepts in action
 
+PacketAnalyzer/
+├── backend/ # Python Flask API & Core Engine
+├── frontend/ # React Web Interface
+└── src/ # Python CLI & Library
+
+
 ## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.8 or higher
-- Administrative privileges (for real packet capture)
-- Node.js 16+ (for frontend)
-
-### Installation
-
-1. **Clone the repository**
+### Backend 
 ```bash
+# Clone repository
 git clone https://github.com/DhitalPrakriti/Packet-Analyzer.git
 cd Packet-Analyzer
 
-**Backend setup**
-**# Install Python dependencies**
+# Install backend dependencies
 pip install -r requirements.txt
-
-# Install in development mode
 pip install -e .
+
+cd frontend
+npm install
+npm start
+# Frontend: http://localhost:3000
 
 # Run comprehensive demo
 packetanalyzer --demo
 
-# Capture 10 real packets
-packetanalyzer --capture --count 10
+# Capture packets
+packetanalyzer --capture --count 10 --stats
 
-# Capture and show statistics
-packetanalyzer --capture --stats
-
-# Full analysis with issue detection
-packetanalyzer --capture --analyze --detect-issues
-
-# Filter specific traffic
-packetanalyzer --capture --filter-protocol TCP --filter-dst-ip 8.8.8.8
-
-# Load and analyze saved capture
-packetanalyzer --load capture_20231201_143022.json --stats --detect-issues
-
-# Start the API server
 cd backend/api
 python app.py
+# API: http://localhost:5000
 
-# API will be available at: http://localhost:5000
+🛠️ Tech Stack
+Backend: Python, Flask, Scapy, Click
+Frontend: React, Axios, CSS3
+CLI: Python Click
 
-# Start frontend development server
-cd frontend
-npm start
-
-# Frontend will be available at: http://localhost:3000
