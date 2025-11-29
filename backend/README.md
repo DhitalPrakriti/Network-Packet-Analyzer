@@ -1,4 +1,4 @@
-🕵️‍♂️ Packet Analyzer - Professional Network Analysis Tool
+**🕵️‍♂️ Packet Analyzer - Professional Network Analysis Tool**
 A comprehensive, educational network packet analyzer built with Python. Capture, analyze, and understand network traffic with real-time parsing and professional-grade visualization.
 
 🔍 Core Capabilities
